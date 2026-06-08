@@ -1,0 +1,19 @@
+/* themes.css — transições suaves entre claro/escuro */
+
+* { transition: background-color .35s ease, border-color .35s ease, color .25s ease; }
+
+html { color-scheme: light; }
+[data-theme="dark"] html { color-scheme: dark; }
+
+::selection { background: var(--primary-soft); color: var(--text); }
+
+/* scrollbar discreta */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb {
+  background: var(--primary-soft);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--primary-glow); background-clip: padding-box; }
+::-webkit-scrollbar-track { background: transparent; }

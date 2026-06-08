@@ -1,0 +1,30 @@
+/* dashboard.css — layout das views e responsividade */
+
+.view { display: none; animation: fadeIn .35s ease; }
+.view.is-active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* legendas hardcoded do gráfico combinado (atualizadas p/ paleta do cliente).
+   Estes dois pontos NÃO leem token CSS — ver seção 5.2 do PROMPT-MOLDE. */
+.legend__dot--invest { background: #8E1622; } /* investimento  (= --primary base) */
+.legend__dot--leads  { background: #B5384A; } /* leads acum.   (= --accent  base) */
+
+@media (max-width: 980px) {
+  .grid--2, .grid--3, .grid--halves { grid-template-columns: 1fr; }
+  .header { flex-wrap: wrap; }
+  .header__agency { border-left: none; padding-left: 0; margin-left: 0; }
+}
+
+@media (max-width: 560px) {
+  .kpis { grid-template-columns: 1fr 1fr; }
+  .toolbar { gap: 8px; }
+  .header__actions .btn span { display: none; }
+}
+
+/* impressão / relatório */
+@media print {
+  body::before, body::after, .bg-blob-3 { display: none; }
+  .toolbar, .header__actions, .icon-btn, .viewtabs { display: none !important; }
+  .glass { box-shadow: none; border: 1px solid #ddd; -webkit-backdrop-filter: none; backdrop-filter: none; background: #fff; }
+  body { background: #fff; }
+}

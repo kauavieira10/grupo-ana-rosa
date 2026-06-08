@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: dashboard-grupo-ana-rosa
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      # Google Sheets (fonte primária)
+      - key: GoogleSheetsApiKeyGrupoAnaRosa
+        sync: false
+      - key: GoogleSheetsIdGrupoAnaRosa
+        sync: false
+      - key: GoogleSheetsNameGrupoAnaRosa
+        sync: false
+      - key: GoogleSheetsRangeGrupoAnaRosa
+        sync: false
+      # Meta Ads (Criativos)
+      - key: MetaAccessTokenGrupoAnaRosa
+        sync: false
+      - key: MetaAdAccountIdGrupoAnaRosa
+        sync: false
+      # Expad (ATIVA)
+      - key: ExpadApiKeyGrupoAnaRosa
+        sync: false
+      - key: ExpadAccountIdGrupoAnaRosa
+        sync: false
+      - key: ExpadClientIdGrupoAnaRosa
+        sync: false
