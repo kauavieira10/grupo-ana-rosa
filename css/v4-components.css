@@ -80,6 +80,30 @@
 .forecast__label { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
 .forecast__value { font-family: var(--font-title); font-weight: 800; font-size: 22px; }
 
+/* ---------- Card recolhível (collapsible) ---------- */
+.card__head--toggle {
+  width: 100%; margin: 0; padding: 0; border: none; background: transparent;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  cursor: pointer; text-align: left; color: inherit; font: inherit;
+}
+.card__head--toggle:hover .card__title { color: var(--primary); }
+.card__head--toggle .chevron {
+  width: 22px; height: 22px; flex: none; color: var(--muted);
+  transition: transform .3s ease, color .2s ease;
+}
+.card__head--toggle:hover .chevron { color: var(--primary); }
+.collapsible.is-open .card__head--toggle .chevron { transform: rotate(180deg); color: var(--primary); }
+
+.collapsible__body {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s ease, margin-top .4s ease, opacity .3s ease;
+  opacity: 0;
+}
+.collapsible.is-open .collapsible__body {
+  max-height: 2600px; opacity: 1; margin-top: 14px;
+}
+.collapsible.is-open #detail-hint { display: none; }
+
 /* ---------- Tabela ---------- */
 .table-scroll { overflow-x: auto; border-radius: var(--radius-sm); }
 table.detail { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 720px; }

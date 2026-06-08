@@ -163,10 +163,18 @@
         <div class="forecast" id="forecast"></div>
       </div></div>
 
-      <!-- tabela de detalhamento -->
-      <div class="grid"><div class="card glass">
-        <div class="card__head"><div class="card__title">Detalhamento diário</div></div>
-        <div id="detail-table"></div>
+      <!-- tabela de detalhamento (recolhível) -->
+      <div class="grid"><div class="card glass collapsible" id="detail-card">
+        <button class="card__head card__head--toggle" id="detail-toggle" aria-expanded="false" aria-controls="detail-collapse">
+          <div>
+            <div class="card__title">Detalhamento diário</div>
+            <div class="card__sub" id="detail-hint">Clique para expandir o dia a dia</div>
+          </div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="collapsible__body" id="detail-collapse">
+          <div id="detail-table"></div>
+        </div>
       </div></div>
     </section>
 

@@ -119,6 +119,14 @@
       renderCreatives();
     }));
 
+    // card recolhível: detalhamento diário
+    const detailToggle = U.byId("detail-toggle");
+    detailToggle && detailToggle.addEventListener("click", () => {
+      const card = U.byId("detail-card");
+      const open = card.classList.toggle("is-open");
+      detailToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+
     // refresh
     const refresh = U.byId("btn-refresh");
     refresh && refresh.addEventListener("click", async () => {
