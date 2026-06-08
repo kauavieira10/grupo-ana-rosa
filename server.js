@@ -27,7 +27,7 @@ const bad = (res, code, msg) => res.status(code).json({ error: msg });
 
 // ---------- /api/sheets (fonte primária) ----------
 app.get("/api/sheets", async (_req, res) => {
-  if (!SHEETS_API_KEY || !SHEETS_ID) return bad(res, 500, "Sheets env vars ausentes");
+  if (!SHEETS_API_KEY || !SHEETS_ID) return ok(res, { configured: false });
   try {
     const range = encodeURIComponent(`${SHEETS_NAME}!${SHEETS_RANGE}`);
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEETS_ID}/values/${range}?key=${SHEETS_API_KEY}`;
@@ -40,7 +40,7 @@ app.get("/api/sheets", async (_req, res) => {
 
 // ---------- /api/meta-creatives (view Criativos) ----------
 app.get("/api/meta-creatives", async (_req, res) => {
-  if (!META_TOKEN || !META_ACCOUNT) return bad(res, 500, "Meta env vars ausentes");
+  if (!META_TOKEN || !META_ACCOUNT) return ok(res, { configured: false });
   try {
     const acct = META_ACCOUNT.startsWith("act_") ? META_ACCOUNT : "act_" + META_ACCOUNT;
     const fields = "name,effective_status,insights{spend,actions},creative{thumbnail_url}";
@@ -65,7 +65,7 @@ app.get("/api/meta-creatives", async (_req, res) => {
 
 // ---------- /api/expad-sales (vendas/qualificados) ----------
 app.get("/api/expad-sales", async (_req, res) => {
-  if (!EXPAD_API_KEY || !EXPAD_ACCOUNT) return bad(res, 500, "Expad env vars ausentes");
+  if (!EXPAD_API_KEY || !EXPAD_ACCOUNT) return ok(res, { configured: false });
   try {
     // Ajuste a URL/headers conforme a doc da Expad do cliente.
     const url = `https://api.expad.com.br/v1/sales?accountId=${encodeURIComponent(EXPAD_ACCOUNT)}` +

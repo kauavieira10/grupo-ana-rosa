@@ -23,6 +23,7 @@ window.Meta = (function () {
     if (!CONFIG.features.meta) return null;
     try {
       const json = await U.fetchJSON(CONFIG.api.metaCreatives, CONFIG.requestTimeoutMs);
+      if (json && json.configured === false) return null;   // sem env -> fallback
       const arr = normalize(json);
       return arr.length ? arr : null;
     } catch (e) {

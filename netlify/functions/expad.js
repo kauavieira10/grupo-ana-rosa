@@ -2,7 +2,7 @@
 const { env, json } = require("./_env");
 exports.handler = async () => {
   const key = env("ExpadApiKey"), account = env("ExpadAccountId"), client = env("ExpadClientId");
-  if (!key || !account) return json(500, { error: "Expad env vars ausentes" });
+  if (!key || !account) return json(200, { configured: false });
   try {
     const url = `https://api.expad.com.br/v1/sales?accountId=${encodeURIComponent(account)}` + (client ? `&clientId=${encodeURIComponent(client)}` : "");
     const r = await fetch(url, { headers: { Authorization: `Bearer ${key}` } });

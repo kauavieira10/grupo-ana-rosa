@@ -18,6 +18,7 @@ window.Expad = (function () {
     if (!CONFIG.features.expad) return null;
     try {
       const json = await U.fetchJSON(CONFIG.api.expadSales, CONFIG.requestTimeoutMs);
+      if (json && json.configured === false) return null;   // sem env -> fallback
       return normalize(json);
     } catch (e) {
       console.warn("[expad] usando fallback:", e.message);

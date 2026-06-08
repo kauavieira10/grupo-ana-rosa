@@ -70,6 +70,7 @@ window.Sheets = (function () {
     if (!CONFIG.useLiveData || !CONFIG.features.google) return null;
     try {
       const json = await U.fetchJSON(CONFIG.api.sheets, CONFIG.requestTimeoutMs);
+      if (json && json.configured === false) return null;   // sem env -> fallback
       const values = json.values || json.data || json.rows || json;
       const daily = parseRows(values);
       if (!daily.length) return null;

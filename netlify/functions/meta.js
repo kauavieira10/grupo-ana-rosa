@@ -2,7 +2,7 @@
 const { env, json } = require("./_env");
 exports.handler = async () => {
   const token = env("MetaAccessToken"), account = env("MetaAdAccountId");
-  if (!token || !account) return json(500, { error: "Meta env vars ausentes" });
+  if (!token || !account) return json(200, { configured: false });
   const acct = account.startsWith("act_") ? account : "act_" + account;
   const fields = "name,effective_status,insights{spend,actions},creative{thumbnail_url}";
   try {
